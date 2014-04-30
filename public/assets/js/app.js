@@ -18,6 +18,8 @@
 		hashtags: {}
 	};
 
+	var socket;
+
 	 // Handle the Start Batttle click event
 	$('#hashtag-submit').click(function(){
 		// Populate client_hashtags
@@ -39,7 +41,7 @@
 		var $hashtags = $('.hashtags li');
 
 		// Start a new connection
-		var socket = io.connect();
+		socket = io.connect();
 
 		// Handle the connection event
 		socket.on('connect', function() {
@@ -77,9 +79,15 @@
 					$('p.total-votes span').text(hashtag_data.total);
 
 					$('div.initializing').addClass('hidden');
+					$('div.stop-voting').removeClass('hidden');
 				}
 			});
 		});
+	});
+
+	$('#stop-voting').click(function(){
+		socket.disconnect();
+		$(this).addClass('hidden');
 	});
 
 	// Draws a d3 powered vertical bar chart
