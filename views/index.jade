@@ -1,0 +1,67 @@
+doctype html
+html
+	head
+		title HashTheVote - Powered by Tint
+		link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700')
+		link(rel='stylesheet', href='/assets/css/main.css')
+	body
+		div.container-fluid
+			header
+				div.navbar
+					div.navbar-inner
+						div
+							a.brand(href="#") TINT
+							ul.nav.navbar-nav.pull-right
+								li
+									a(href="#") About
+								li
+									a(href="#") Pricing
+								li
+									a(href="#") Examples
+								li
+									a(href="#") Blog
+								li
+									a(href="#") Support
+								li.active
+									a(href="#") Dashboard
+								li
+									a(href="#") Logout
+		div.container-fluid
+			div.brand-banner
+				div.brand-banner-inner
+					span.glyphicon.glyphicon-signal#logo-icon
+					h1 #HashTheVote 
+						
+					p Tint helps you put your ideas to vote! Twitter users can answer your question directly by tweeting with a #hashtag attached, while you track the votes in realtime with our analytics dashboard.
+			div.container
+
+				div.vote
+					p Enter the hashtags you want users to vote for: 
+					div.form-inline#vote-form
+						div.form-group
+							input#hashtag-input.input-lg(type='text', placeholder='#brand1, #brand2').form-control
+							button#hashtag-submit.btn.btn-primary.btn-lg 
+								span.glyphicon.glyphicon-ok 
+								|  Start the Voting 
+
+				div.initializing.hidden
+					div.spinner-box
+						p.spinner
+							span
+							|  Waiting for the first vote...
+
+
+				div.results
+					svg.chart
+					p.total-votes.hidden Total Votes: 
+						span.badge 1
+
+		script(type='text/javascript', src='/bower_components/jquery/dist/jquery.min.js')
+		script(type='text/javascript', src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+		script(type='text/javascript', src='/bower_components/d3/d3.min.js')
+		script(type='text/javascript', src='/bower_components/underscore/underscore.js')
+		script(type='text/javascript', src='/bower_components/spinjs/spin.js')
+		script(type='text/javascript', src='/bower_components/spinjs/jquery.spin.js')
+		script(type='text/javascript', src='/socket.io/socket.io.js')
+		script(type='text/javascript', src='/assets/js/app.js')
