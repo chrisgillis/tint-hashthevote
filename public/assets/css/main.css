@@ -20,7 +20,7 @@ div.vote p{font-size:18px;margin-bottom:20px}
 #vote-form{margin-bottom:50px}
 #hashtag-input{margin-right:10px}
 @media (max-width:767px){#hashtag-input{margin-bottom:10px}}
-p.total-votes{text-transform:uppercase;letter-spacing:2px;line-height:1}
+p.total-votes{text-transform:uppercase;letter-spacing:2px;line-height:1;margin-bottom:40px}
 p.total-votes span.badge{font-size:18px;padding:4px 12px}
 div.spinner-box{text-align:center}
 div.spinner-box p.spinner{position:relative}
