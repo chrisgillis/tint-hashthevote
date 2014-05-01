@@ -15,7 +15,7 @@
 	var hashtag_data = {
 		total: 0,
 		hashtags: {}
-	};
+	}; 
 
 	var socket;
 

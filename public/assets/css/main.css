@@ -23,9 +23,9 @@ div.vote p{font-size:18px;margin-bottom:20px}
 p.total-votes{text-transform:uppercase;letter-spacing:2px;line-height:1;margin-bottom:40px}
 p.total-votes span.badge{font-size:18px;padding:4px 12px}
 div.spinner-box{text-align:center}
-div.spinner-box p.spinner{position:relative}
-div.spinner-box p.spinner span{display:inline-block;position:relative;left:-20px;top:-4px}
-div.results,div.stop-voting{text-align:center}
+div.spinner-box p.spinner{position:relative;font-size:18px}
+div.spinner-box p.spinner span{display:inline-block;position:relative;left:-20px;top:-6px}
+div.stop-voting,div.streamResultsChartWidget{text-align:center}
 .chart{height:300px}
 .chart rect{fill:#bbb}
 .chart text{fill:#fff;font:10px sans-serif;text-anchor:middle}

@@ -10,7 +10,7 @@ var StreamResultsChartWidget = {
 		width: 500,
 		height: 300,
 		barMargin: 40,
-		$chartWrapper: $('.streamResultsChartWidget')
+		$chartWrapper: $('.streamResultsChartWidget .chart')
 	},
 
 	clear: function() {
@@ -28,7 +28,7 @@ var StreamResultsChartWidget = {
 	},
 
 	draw: function(hashtags) {
-		this.settings.$chartWrapper.clear();
+		this.clear();
 
 		var chart_data = this.getData(hashtags),
 			labels     = chart_data.labels,
