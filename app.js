@@ -35,7 +35,7 @@ app.get('/', function(req, res) {
 var hashtags = [];
 
 // Start up the streaming API
-var stream = twitter.stream('statuses/filter', { track: hashtags });
+var stream;
 
 // Start listening for requests
 var server = app.listen(7197, function() {
@@ -46,6 +46,7 @@ var io = require('socket.io').listen(server)
 
 // Handle socket connections
 io.sockets.on('connection', function(socket){
+    stream = twitter.stream('statuses/filter', { track: hashtags });
     // Expect clients to want hashtag rooms
     socket.on('room', function(room){
         // Add the requested rooms to the twitter stream
@@ -67,39 +68,38 @@ io.sockets.on('connection', function(socket){
 
         if(new_room) {
             // Re-up the twitter stream to watch the new room
-            
             stream.stop();
             stream.params = {track: hashtags.join(",")};
             stream.start();
         }
     });
-});
 
-// When tweets are encountered on the stream
-stream.on('tweet', function(tweet){
-    // Not sure why this crops up but very rarely this is undefined even though
-    // tweet.text contains the hashtag. Would need to dive deeper.
-    if(typeof tweet.entities != "undefined" && typeof tweet.entities.hashtags[0] != "undefined"){
-        // Broadcast the tweet to the appropriate hashtag room
-        io.sockets.in("#"+tweet.entities.hashtags[0].text.toLowerCase()).emit('tweet', tweet);
-    }
-});
+    // When tweets are encountered on the stream
+    stream.on('tweet', function(tweet){
+        // Not sure why this crops up but very rarely this is undefined even though
+        // tweet.text contains the hashtag. Would need to dive deeper.
+        if(typeof tweet.entities != "undefined" && typeof tweet.entities.hashtags[0] != "undefined"){
+            // Broadcast the tweet to the appropriate hashtag room
+            io.sockets.in("#"+tweet.entities.hashtags[0].text.toLowerCase()).emit('tweet', tweet);
+        }
+    });
 
-// Log a couple streaming api messages
-stream.on('limit', function(limitMessage){
-    console.log("LIMIT:", limitMessage);
-});
+    // Log a couple streaming api messages
+    stream.on('limit', function(limitMessage){
+        console.log("LIMIT:", limitMessage);
+    });
 
-stream.on('connect', function(request){
-    console.log("CONNECT");
-});
+    stream.on('connect', function(request){
+        console.log("CONNECT");
+    });
 
-stream.on('disconnect', function(disconnectMessage){
-    console.log("DISCONNECT:", disconnectMessage);
-})
+    stream.on('disconnect', function(disconnectMessage){
+        console.log("DISCONNECT:", disconnectMessage);
+    })
 
-stream.on('reconnect', function(request, response, connectInterval){
-    console.log("RECONNECT");
+    stream.on('reconnect', function(request, response, connectInterval){
+        console.log("RECONNECT");
+    });
 });
 
 // Handle socket disconnects
