@@ -69,9 +69,7 @@ io.sockets.on('connection', function(socket){
             // Re-up the twitter stream to watch the new room
             
             stream.stop();
-            console.log('stopped');
             stream.params = {track: hashtags.join(",")};
-            console.log('started')
             stream.start();
         }
     });

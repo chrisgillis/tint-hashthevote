@@ -35,6 +35,7 @@ Unit tests are located in `tests/`. You can run them with `mocha`.
 
 ### User Stories for Enhancements
 
+* Users can embed a widget to display the results elsewhere (like Tint)
 * Users can come back to a vote in progress
 * Users can save their voting results to the database
 * Users can view a barchart that shows votes over time for each hashtag
