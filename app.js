@@ -67,8 +67,11 @@ io.sockets.on('connection', function(socket){
 
         if(new_room) {
             // Re-up the twitter stream to watch the new room
+            
             stream.stop();
+            console.log('stopped');
             stream.params = {track: hashtags.join(",")};
+            console.log('started')
             stream.start();
         }
     });
@@ -82,7 +85,23 @@ stream.on('tweet', function(tweet){
         // Broadcast the tweet to the appropriate hashtag room
         io.sockets.in("#"+tweet.entities.hashtags[0].text.toLowerCase()).emit('tweet', tweet);
     }
-    
+});
+
+// Log a couple streaming api messages
+stream.on('limit', function(limitMessage){
+    console.log("LIMIT:", limitMessage);
+});
+
+stream.on('connect', function(request){
+    console.log("CONNECT");
+});
+
+stream.on('disconnect', function(disconnectMessage){
+    console.log("DISCONNECT:", disconnectMessage);
+})
+
+stream.on('reconnect', function(request, response, connectInterval){
+    console.log("RECONNECT");
 });
 
 // Handle socket disconnects

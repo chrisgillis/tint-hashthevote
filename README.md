@@ -28,11 +28,14 @@ Unit tests are located in `tests/`. You can run them with `mocha`.
 * A presentation layer framework like React might be used in the future for the 
   data-bound components in the view. I've kept it pretty simple at the moment.
 
+* Count accumulation should be moved to the server and sessions implemented so users can navigate away from the vote page and not lose the data.
+
 * A logging mechanism should be implemented before production use.
 
 
 ### User Stories for Enhancements
 
+* Users can come back to a vote in progress
 * Users can save their voting results to the database
 * Users can view a barchart that shows votes over time for each hashtag
 * Users can see the geographical locations that get the most votes
