@@ -28,7 +28,7 @@ var StreamResultsChartWidget = {
 	},
 
 	draw: function(hashtags) {
-		this.clear();
+		this.settings.$chartWrapper.clear();
 
 		var chart_data = this.getData(hashtags),
 			labels     = chart_data.labels,

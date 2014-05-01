@@ -141,11 +141,12 @@ div.spinner-box {
 	text-align: center;
 	p.spinner {
 		position: relative;
+		font-size: 18px;
 		span {
 			display: inline-block;
 			position: relative;
 			left: -20px;
-			top: -4px;
+			top: -6px;
 		}
 	}
 }

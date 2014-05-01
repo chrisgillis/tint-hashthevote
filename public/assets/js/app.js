@@ -72,7 +72,7 @@
 				if(text.indexOf(hashtag) !== -1){
 					var count = ++hashtag_data.hashtags[hashtag];
 					// Redraw the chart, possible optimization issue here
-					StreamResultsChartWidget.draw(hastag_data.hashtags);
+					StreamResultsChartWidget.draw(hashtag_data.hashtags);
 					// Redraw the total
 					$('p.total-votes').removeClass('hidden');
 					$('p.total-votes span').text(hashtag_data.total);
