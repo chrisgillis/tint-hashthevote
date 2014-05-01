@@ -77,13 +77,16 @@
 		};
 	};
 
+
+	var client;
+
 	 // Handle the Start Batttle click event
 	$('#hashtag-submit').click(function(){
 		// Once we're done appending, lets keep a list of all of the hashtag <li>
 		var $hashtags = $('.hashtags li');
 
 		// Make a new client and connect
-		var client = new HtvClient({hashtags: $('#hashtag-input').val().toLowerCase().split(",")});
+		client = new HtvClient({hashtags: $('#hashtag-input').val().toLowerCase().split(",")});
 		client.connect();
 
 		$('div.vote').addClass('hidden');
