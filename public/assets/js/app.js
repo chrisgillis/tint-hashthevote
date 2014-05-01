@@ -14,8 +14,8 @@
 	// The structure to hold the hashtag counts
 	var hashtag_data = {
 		total: 0,
-		hashtags: {'#one':2,'#two':10}
-	};StreamResultsChartWidget.draw(hashtag_data.hashtags);
+		hashtags: {}
+	};
 
 	var socket;
 
