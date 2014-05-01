@@ -78,11 +78,11 @@ io.sockets.on('connection', function(socket){
 stream.on('tweet', function(tweet){
     // Not sure why this crops up but very rarely this is undefined even though
     // tweet.text contains the hashtag. Would need to dive deeper.
-    if(typeof tweet.entities == "undefined" || typeof tweet.entities.hashtags[0] == "undefined"){
-        return;
+    if(typeof tweet.entities != "undefined" && typeof tweet.entities.hashtags[0] != "undefined"){
+        // Broadcast the tweet to the appropriate hashtag room
+        io.sockets.in("#"+tweet.entities.hashtags[0].text.toLowerCase()).emit('tweet', tweet);
     }
-    // Broadcast the tweet to the appropriate hashtag room
-    io.sockets.in("#"+tweet.entities.hashtags[0].text.toLowerCase()).emit('tweet', tweet);
+    
 });
 
 // Handle socket disconnects
