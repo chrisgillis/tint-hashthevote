@@ -35,6 +35,13 @@ div.container-fluid {
 	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba( $primary-color, .6);
 }
 
+span.icon-bar {
+	background: #777;
+}
+.navbar > .container-fluid .navbar-brand {
+	margin-left: 0px;
+}
+
 /**
  * Layout Styles
  * --------------------------------------------------*/
@@ -61,12 +68,10 @@ header {
 	}
 	.navbar ul {
 		margin-top: 3px;
-		margin-right: 25px;
 	}
 	a.brand {
 		font-size: 40px;
 		text-decoration: none;
-		margin-left: 25px;
 	}
 }
 
@@ -113,6 +118,11 @@ div.vote {
 }
 #hashtag-input {
 	margin-right: 10px;
+}
+@media (max-width: 767px) {
+	#hashtag-input {
+		margin-bottom: 10px;
+	}
 }
 
 p.total-votes {

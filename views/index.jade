@@ -8,10 +8,16 @@ html
 	body
 		div.container-fluid
 			header
-				div.navbar
-					div.navbar-inner
-						div
-							a.brand(href="#") TINT
+				div.navbar(role='navigation')
+					div.container-fluid
+						div.navbar-header
+							button.navbar-toggle(data-toggle='collapse', data-target='#main-menu-collapse')
+								span.sr-only Toggle Navigation
+								span.icon-bar
+								span.icon-bar
+								span.icon-bar
+							a.brand.navbar-brand(href='#') TINT
+						div.collapse.navbar-collapse(id='main-menu-collapse')
 							ul.nav.navbar-nav.pull-right
 								li
 									a(href="#") About
